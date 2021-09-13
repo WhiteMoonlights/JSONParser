@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\yingjie\\PycharmProjects\\pyqt1'],
+             pathex=['D:\\zyj\\project\\JSONParser'],
              binaries=[],
              datas=[],
              hiddenimports=[],

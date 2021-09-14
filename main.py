@@ -37,13 +37,13 @@ class MyWindow(QMainWindow, Ui_MainWindow):
     def json_format(self):
         json_obj = self.json_format_check()
         if json_obj:
-            s = json.dumps(json_obj, indent=4)
+            s = json.dumps(json_obj, indent=4, ensure_ascii=False, sort_keys=True)
             self.plainTextEdit.setPlainText(s)
 
     def json_reduce(self):
         json_obj = self.json_format_check()
         if json_obj:
-            s = json.dumps(json_obj)
+            s = json.dumps(json_obj, ensure_ascii=False, sort_keys=True)
             self.plainTextEdit.setPlainText(s)
 
     def print_res(self) -> None:
@@ -52,7 +52,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if json_obj and path:
             r = jsonpath.jsonpath(json_obj, path)
             if r:
-                r = json.dumps(r, indent=4)
+                r = json.dumps(r, indent=4, ensure_ascii=False, sort_keys=True)
                 self.textBrowser.setText(r)
             else:
                 self.textBrowser.setText("无匹配结果")

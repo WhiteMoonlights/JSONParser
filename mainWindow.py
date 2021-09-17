@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "JSONPATH测试工具"))
-        self.label.setText(_translate("MainWindow", "JSONPATH表达式"))
+        self.label.setText(_translate("MainWindow", "JSONPATH或正则表达式"))
         self.label_2.setText(_translate("MainWindow", "JASON串"))
         self.pushButton_1.setText(_translate("MainWindow", "格式化"))
         self.pushButton_2.setText(_translate("MainWindow", "压缩"))

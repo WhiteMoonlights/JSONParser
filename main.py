@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from mainWindow import *
+from response_extractor import ResponseExtractor
 
 
 class MyWindow(QMainWindow, Ui_MainWindow):
@@ -44,18 +45,23 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         json_obj = self.json_format_check()
         if json_obj:
             s = json.dumps(json_obj, ensure_ascii=False, sort_keys=True)
+            s = s.replace(" ", "")
             self.plainTextEdit.setPlainText(s)
 
     def print_res(self) -> None:
         path = self.lineEdit.text()
-        json_obj = self.json_format_check()
-        if json_obj and path:
-            r = jsonpath.jsonpath(json_obj, path)
+        self.json_format_check()
+        json_str = self.plainTextEdit.toPlainText()
+        if json_str and path:
+            r = ResponseExtractor().main(json_str, path)
             if r:
-                r = json.dumps(r, indent=4, ensure_ascii=False, sort_keys=True)
+                if isinstance(r, str):
+                    pass
+                else:
+                    r = json.dumps(r, indent=4, ensure_ascii=False, sort_keys=True)
                 self.textBrowser.setText(r)
             else:
-                self.textBrowser.setText("无匹配结果")
+                self.textBrowser.setText(f"{r}")
         else:
             self.textBrowser.setText("")
 

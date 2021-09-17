@@ -32,7 +32,7 @@
           </font>
          </property>
          <property name="text">
-          <string>JSONPATH表达式</string>
+          <string>JSONPATH或正则表达式</string>
          </property>
         </widget>
        </item>
